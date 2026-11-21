@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #FCE4EC;
+    --bg-secondary: #FFF0F5;
+    --text-primary: #8B1538;
+    --accent: #FF3B78;
+    --card-cream: #FFFDF9;
+  }
+
+  html {
+    height: 100%;
+    height: 100dvh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overscroll-behavior: none;
+    touch-action: none; /* Disables all native page bounce & vertical scrolling */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Quicksand', 'Outfit', sans-serif;
+    touch-action: none; /* Zero scroll play by default */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
+    overflow: hidden; /* Complete lock: NO up/down page scroll play */
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+    -webkit-overscroll-behavior: none;
+    background: radial-gradient(circle at 50% 20%, #FFF0F5 0%, #FCE4EC 60%, #F8BBD0 100%);
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+  }
+
+  button, a, input {
+    touch-action: manipulation;
+  }
+}
+
+/* Allow scrolling ONLY inside scroll-dedicated parchment letter containers */
+.allow-scroll {
+  touch-action: pan-y !important;
+  overscroll-behavior: contain !important;
+  overscroll-behavior-y: contain !important;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Horizontal swipe for polaroid gallery */
+.allow-pan-x {
+  touch-action: pan-x !important;
+}
+
+.font-script {
+  font-family: 'Dancing Script', 'Caveat', cursive;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', 'Dancing Script', cursive;
+}
+
+.font-cute {
+  font-family: 'Pacifico', cursive;
+}
+
+/* Custom animations & keyframes */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 59, 120, 0.4), 0 0 25px rgba(255, 182, 193, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 22px rgba(255, 59, 120, 0.7), 0 0 38px rgba(255, 182, 193, 0.5);
+  }
+}
+
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    filter: drop-shadow(0 0 8px #ff9800) drop-shadow(0 0 16px #ffeb3b);
+  }
+  25% {
+    transform: scale(1.06, 0.96) rotate(2deg);
+    filter: drop-shadow(0 0 12px #ff5722) drop-shadow(0 0 20px #ffc107);
+  }
+  50% {
+    transform: scale(0.96, 1.04) rotate(-2deg);
+    filter: drop-shadow(0 0 10px #ff9800) drop-shadow(0 0 18px #ffeb3b);
+  }
+  75% {
+    transform: scale(1.03, 0.98) rotate(1deg);
+    filter: drop-shadow(0 0 14px #ff5722) drop-shadow(0 0 22px #ffc107);
+  }
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-25px) scale(1.5) rotate(15deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(2.2) rotate(-15deg);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(50px);
+    opacity: 0.2;
+  }
+}
+
+.animate-float {
+  animation: floatSlow 3.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-flame {
+  animation: flameFlicker 0.4s ease-in-out infinite alternate;
+}
+
+.animate-smoke {
+  animation: smokeRise 1.8s ease-out forwards;
+}
+
+/* Custom scrollbar for letter parchment */
+.mobile-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.mobile-scroll::-webkit-scrollbar-track {
+  background: rgba(254, 226, 226, 0.4);
+  border-radius: 9999px;
+}
+.mobile-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 59, 120, 0.35);
+  border-radius: 9999px;
+}
